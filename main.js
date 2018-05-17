@@ -1,6 +1,8 @@
 const {app, BrowserWindow} = require('electron')
 const path = require('path')
 const url = require('url')
+const {ipcMain} = require('electron')
+
 
 app.on('ready', ()=>{
     // Create the browser window.
@@ -11,5 +13,11 @@ app.on('ready', ()=>{
       pathname: path.join(__dirname, 'index.html'),
       protocol: 'file:',
       slashes: true
-    }))  
+    }))
+    
+    //IPC events
+    ipcMain.on('message', (event, arg) => {
+      console.log(arg);  // prints "ping"
+      event.sender.send('reply', 'pong')
+    });
 })

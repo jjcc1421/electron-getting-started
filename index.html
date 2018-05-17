@@ -7,6 +7,16 @@
     <title>Electron demo</title>
 </head>
 <body>
-    Hello world
+    <button id="sender">Send Pong</button>
 </body>
+<script>
+    const {ipcRenderer} = require('electron')
+    ipcRenderer.on('reply', (event, arg) => {
+      console.log(arg)
+    });
+    const senderBtn = document.querySelector('#sender')
+    senderBtn.addEventListener('click', () => {
+        ipcRenderer.send('message', 'ping');
+    })
+</script>
 </html>
