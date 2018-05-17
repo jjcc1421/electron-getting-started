@@ -10,6 +10,10 @@ $ npm version
 5.6.0
 ```
 
+### Branches
+
+**master:** getting started demo.
+**ipc:** ipc demo.
 
 ## Project structure
 ```
